@@ -439,41 +439,175 @@ h3 {
   background: var(--warm-white);
 }
 
-.donate-card,
-.contact-card {
-  background:
-    linear-gradient(135deg, rgba(67, 107, 86, 0.95), rgba(49, 89, 106, 0.92));
-  color: white;
-  border-radius: calc(var(--radius) + 12px);
-  padding: clamp(1.5rem, 5vw, 3rem);
+.donation-layout {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  align-items: center;
+  grid-template-columns: 0.78fr 1.22fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.donation-intro {
+  position: sticky;
+  top: 110px;
+}
+
+.donation-intro p {
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+
+.donation-note {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(124, 155, 120, 0.12);
+  border: 1px solid rgba(124, 155, 120, 0.28);
+  color: var(--ink);
+}
+
+.donation-form,
+.contact-form {
+  background: var(--warm-white);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 8px);
+  padding: clamp(1rem, 3vw, 2rem);
   box-shadow: var(--shadow);
 }
 
-.donate-card h2,
-.donate-card .eyebrow,
-.contact-card h2,
-.contact-card .eyebrow {
-  color: white;
+.form-section {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.donate-card p,
-.contact-card p {
-  color: rgba(255, 255, 255, 0.86);
+.form-section:first-child {
+  padding-top: 0;
 }
 
-.donate-action {
+.form-section:last-of-type {
+  border-bottom: 0;
+}
+
+.step-label {
+  display: inline-flex;
+  width: fit-content;
+  color: var(--sage-dark);
+  background: rgba(124, 155, 120, 0.16);
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.65rem;
+}
+
+.amount-options {
   display: grid;
-  gap: 0.85rem;
-  justify-items: start;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
 }
 
-.donate-action small {
-  color: rgba(255, 255, 255, 0.74);
-  max-width: 260px;
+.amount-button {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+  border-radius: 18px;
+  padding: 1rem 0.75rem;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.amount-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(67, 107, 86, 0.5);
+}
+
+.amount-button.active {
+  background: var(--sage-dark);
+  color: white;
+  border-color: var(--sage-dark);
+}
+
+.custom-amount-field {
+  margin-top: 1rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.currency-input {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.currency-input span {
+  padding-left: 1rem;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.currency-input input {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+.donor-grid,
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.payment-options {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.payment-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1rem;
+  background: #fff;
+  cursor: pointer;
+}
+
+.payment-card:has(input:checked) {
+  border-color: var(--sage-dark);
+  background: rgba(124, 155, 120, 0.10);
+}
+
+.payment-card input {
+  width: auto;
+  margin-top: 0.2rem;
+  accent-color: var(--sage-dark);
+}
+
+.payment-card small {
+  display: block;
+  color: var(--muted);
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.payment-instructions {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(111, 151, 168, 0.12);
+  border: 1px solid rgba(111, 151, 168, 0.25);
+  color: var(--ink);
 }
 
 .appointment-section {
@@ -488,17 +622,6 @@ h3 {
   border-radius: 18px;
   padding: 1rem;
   color: var(--ink) !important;
-}
-
-.contact-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  background: var(--warm-white);
-  border: 1px solid var(--line);
-  border-radius: calc(var(--radius) + 8px);
-  padding: clamp(1rem, 3vw, 2rem);
-  box-shadow: var(--shadow);
 }
 
 label {
@@ -540,11 +663,29 @@ textarea {
 .form-helper {
   color: var(--muted);
   font-size: 0.86rem;
-  margin: 0;
+  margin: 0.8rem 0 0;
 }
 
 .contact-card {
+  background:
+    linear-gradient(135deg, rgba(67, 107, 86, 0.95), rgba(49, 89, 106, 0.92));
+  color: white;
+  border-radius: calc(var(--radius) + 12px);
+  padding: clamp(1.5rem, 5vw, 3rem);
+  display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.contact-card h2,
+.contact-card .eyebrow {
+  color: white;
+}
+
+.contact-card p {
+  color: rgba(255, 255, 255, 0.86);
 }
 
 .contact-list {
@@ -584,9 +725,13 @@ textarea {
   .two-column,
   .about-grid,
   .appointment-grid,
-  .donate-card,
+  .donation-layout,
   .contact-card {
     grid-template-columns: 1fr;
+  }
+
+  .donation-intro {
+    position: static;
   }
 
   .hero-card {
@@ -599,10 +744,6 @@ textarea {
 
   .tips-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .donate-action {
-    justify-items: start;
   }
 }
 
@@ -661,13 +802,19 @@ textarea {
 
   .card-grid,
   .tips-grid,
-  .contact-form {
+  .contact-form,
+  .donor-grid,
+  .amount-options {
     grid-template-columns: 1fr;
   }
 
   .image-placeholder,
   .portrait-placeholder {
     min-height: 300px;
+  }
+
+  .payment-card {
+    grid-template-columns: auto 1fr;
   }
 
   .footer-grid {
@@ -692,7 +839,7 @@ textarea {
   .service-card,
   .tip-card,
   .contact-form,
-  .donate-card,
+  .donation-form,
   .contact-card {
     border-radius: 20px;
   }

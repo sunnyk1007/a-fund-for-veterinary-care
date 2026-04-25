@@ -52,7 +52,7 @@
             A Fund for Veterinary Care supports stray, abandoned, rescued, and underserved animals in North Potomac and the surrounding community by helping them access the medical care, surgical care, food, medication, and support they need.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="YOUR_DONATION_LINK_HERE">Donate</a>
+            <a class="button button-primary" href="#donate">Donate</a>
             <a class="button button-secondary" href="#appointment">Request an Appointment</a>
           </div>
           <div class="trust-row" aria-label="Organization highlights">
@@ -223,20 +223,110 @@
     </section>
 
     <section class="section donate-section" id="donate">
-      <div class="container donate-card">
-        <div>
-          <p class="eyebrow">Make care possible</p>
-          <h2>Your donation helps animals receive the care they deserve.</h2>
-          <p>
-            Donations help provide veterinary exams, surgical care, dental treatment, medications, food, boarding support, and urgent care for animals who are stray, abandoned, rescued, or otherwise underserved.
-          </p>
-          <p>
-            Every contribution helps close the gap between an animal in need and the care that can change its life.
-          </p>
-        </div>
-        <div class="donate-action">
-          <a class="button button-primary button-large" href="YOUR_DONATION_LINK_HERE">Donate Now</a>
-          <small>Donation link placeholder — replace with your final donation page.</small>
+      <div class="container">
+        <div class="donation-layout">
+          <div class="donation-intro">
+            <p class="eyebrow">Make care possible</p>
+            <h2>Your donation helps animals receive the care they deserve.</h2>
+            <p>
+              Donations help provide veterinary exams, surgical care, dental treatment, medications, food, boarding support, and urgent care for animals who are stray, abandoned, rescued, or otherwise underserved.
+            </p>
+            <p>
+              Every contribution helps close the gap between an animal in need and the care that can change its life.
+            </p>
+            <div class="donation-note">
+              <strong>Secure payment setup:</strong> This demo collects donor intent and contact details. Before publishing, connect the form to your preferred donation processor or form tool.
+            </div>
+          </div>
+
+          <form class="donation-form" action="https://formspree.io/f/YOUR_DONATION_FORM_ID" method="POST">
+            <div class="form-section">
+              <span class="step-label">Step 1</span>
+              <h3>Choose a donation amount</h3>
+              <input type="hidden" name="donation_amount" id="donation-amount" value="50">
+
+              <div class="amount-options" role="group" aria-label="Donation amount">
+                <button class="amount-button active" type="button" data-amount="50">$50</button>
+                <button class="amount-button" type="button" data-amount="250">$250</button>
+                <button class="amount-button" type="button" data-amount="500">$500</button>
+                <button class="amount-button" type="button" data-amount="custom">Any amount</button>
+              </div>
+
+              <label class="custom-amount-field hidden" id="custom-amount-field">
+                Enter donation amount
+                <span class="currency-input">
+                  <span>$</span>
+                  <input type="number" name="custom_amount" id="custom-amount" min="1" step="1" placeholder="Enter amount">
+                </span>
+              </label>
+            </div>
+
+            <div class="form-section">
+              <span class="step-label">Step 2</span>
+              <h3>Your contact information</h3>
+              <div class="donor-grid">
+                <label>
+                  Name
+                  <input type="text" name="donor_name" placeholder="Your name" required>
+                </label>
+
+                <label>
+                  Email
+                  <input type="email" name="donor_email" placeholder="you@example.com" required>
+                </label>
+
+                <label>
+                  Phone number
+                  <input type="tel" name="donor_phone" placeholder="(000) 000-0000">
+                </label>
+
+                <label>
+                  Mailing address
+                  <input type="text" name="donor_address" placeholder="Address, city, state, ZIP">
+                </label>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <span class="step-label">Step 3</span>
+              <h3>Select a payment option</h3>
+
+              <div class="payment-options">
+                <label class="payment-card">
+                  <input type="radio" name="payment_option" value="Electronic transfer" required>
+                  <span>
+                    <strong>Electronic</strong>
+                    <small>Use this for ACH, Zelle, or another electronic transfer option.</small>
+                  </span>
+                </label>
+
+                <label class="payment-card">
+                  <input type="radio" name="payment_option" value="Check" required>
+                  <span>
+                    <strong>By check</strong>
+                    <small>Use this if you would like to mail or drop off a check.</small>
+                  </span>
+                </label>
+
+                <label class="payment-card">
+                  <input type="radio" name="payment_option" value="Card" required>
+                  <span>
+                    <strong>By card</strong>
+                    <small>Use this if you would like to pay securely by credit or debit card.</small>
+                  </span>
+                </label>
+              </div>
+
+              <div class="payment-instructions" id="payment-instructions" aria-live="polite">
+                Select a payment option to see the next step.
+              </div>
+            </div>
+
+            <button class="button button-primary full-span" type="submit">Submit Donation Pledge</button>
+            <p class="form-helper">
+              Replace the form action with Formspree, Google Forms, or your donation platform. Do not collect card numbers directly on this static website.
+            </p>
+          </form>
         </div>
       </div>
     </section>
@@ -254,7 +344,7 @@
           </p>
         </div>
 
-        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/YOUR_APPOINTMENT_FORM_ID" method="POST">
           <label>
             Name
             <input type="text" name="name" placeholder="Your name" required>
